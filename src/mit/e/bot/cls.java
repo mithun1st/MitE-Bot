@@ -4,8 +4,8 @@ package mit.e.bot;
 
 public class cls {
 
-    public static void main(String[] args) {
-        
+    public void transmit(String s){
+        System.out.println(">> "+s);
     }
-
+    
 }
