@@ -19,7 +19,7 @@ public class frm extends javax.swing.JFrame {
     
     cls o=new cls();
     
-    public void bEnable(boolean b){
+    public void fEnable(boolean b){
         
         if(b){
             eLook();
@@ -128,8 +128,10 @@ public class frm extends javax.swing.JFrame {
     
     
     public frm() {
-        initComponents();
+        initComponents();                
         this.setLocationRelativeTo(this);
+        
+        fEnable(false);
     }
 
     /**
@@ -158,7 +160,7 @@ public class frm extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        x = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -313,14 +315,14 @@ public class frm extends javax.swing.JFrame {
         jButton3.setText("<");
         jButton3.setFocusPainted(false);
 
-        jButton6.setFont(new java.awt.Font("Dialog", 0, 3)); // NOI18N
-        jButton6.setText(" ");
-        jButton6.setBorderPainted(false);
-        jButton6.setContentAreaFilled(false);
-        jButton6.setFocusPainted(false);
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        x.setFont(new java.awt.Font("Dialog", 0, 3)); // NOI18N
+        x.setText(" ");
+        x.setBorderPainted(false);
+        x.setContentAreaFilled(false);
+        x.setFocusPainted(false);
+        x.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                xActionPerformed(evt);
             }
         });
 
@@ -331,7 +333,7 @@ public class frm extends javax.swing.JFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addComponent(jButton3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(x, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(19, 19, 19)
                 .addComponent(jButton4))
             .addGroup(jPanel6Layout.createSequentialGroup()
@@ -348,7 +350,7 @@ public class frm extends javax.swing.JFrame {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton3)
                     .addComponent(jButton4)
-                    .addComponent(jButton6))
+                    .addComponent(x))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton2)
                 .addGap(6, 6, 6))
@@ -429,6 +431,11 @@ public class frm extends javax.swing.JFrame {
         jTextField2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTextField2MouseClicked(evt);
+            }
+        });
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
             }
         });
 
@@ -671,28 +678,36 @@ public class frm extends javax.swing.JFrame {
 
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
         // TODO add your handling code here:
+        jToggleButton2.doClick();
     }//GEN-LAST:event_jTextField3ActionPerformed
 
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
         // TODO add your handling code here:
-        if(jTextField2.getText().matches("xxx.xxx.xxx.xxx-")||jTextField2.getText().matches("")||jTextField3.getText().matches("")){
+        if(jTextField2.getText().matches("xxx.xxx.xxx.xxx")||jTextField2.getText().matches("")||jTextField3.getText().matches("")){
             JOptionPane.showMessageDialog(jPanel1,"Enter The IP Address & Port Number First.","Alert",JOptionPane.CANCEL_OPTION);
             jToggleButton2.setSelected(false);
         }
         else{
             if(jToggleButton2.isSelected()){
-                bEnable(true);
+                fEnable(true);
                                
                 jToggleButton2.setText("Disconnect");
+                
+                jTextField2.setEnabled(false);
+                jTextField3.setEnabled(false);
+                
                 jTextField2.setEditable(false);
                 jTextField3.setEditable(false);
             }
             else{
-                bEnable(false);
+                fEnable(false);
                 
                 jToggleButton2.setText("Connect");
+                jTextField2.setEnabled(true);
                 jTextField2.setEditable(true);
-                jTextField3.setEditable(true);             
+                
+                jTextField3.setEnabled(true);
+                jTextField3.setEditable(true);
             }
         }
         
@@ -745,12 +760,12 @@ public class frm extends javax.swing.JFrame {
 
     private void jPanel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseClicked
         // TODO add your handling code here:
-        jPanel3.setFocusable(true);
+        //jPanel3.setFocusable(true);
     }//GEN-LAST:event_jPanel3MouseClicked
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void xActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_xActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_xActionPerformed
 
     private void jSlider2MouseWheelMoved(java.awt.event.MouseWheelEvent evt) {//GEN-FIRST:event_jSlider2MouseWheelMoved
         // TODO add your handling code here:
@@ -779,6 +794,11 @@ public class frm extends javax.swing.JFrame {
         o.transmit(jTextField1.getText());
         jTextField1.setText("");
     }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+        jToggleButton2.doClick();
+    }//GEN-LAST:event_jTextField2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -821,7 +841,6 @@ public class frm extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -853,5 +872,6 @@ public class frm extends javax.swing.JFrame {
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JToggleButton jToggleButton2;
     private javax.swing.JToggleButton jToggleButton3;
+    private javax.swing.JButton x;
     // End of variables declaration//GEN-END:variables
 }
