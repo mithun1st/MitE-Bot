@@ -59,12 +59,6 @@ public class login extends javax.swing.JFrame {
             
             o.close();
             
-            System.out.println(server);
-            System.out.println(database);
-            System.out.println(uname);
-            System.out.println(pw);
-            System.out.println(port);
-            
             jTextField1.setText(server);
             jTextField2.setText(database);
             jTextField4.setText(uname);
@@ -82,7 +76,7 @@ public class login extends javax.swing.JFrame {
         initComponents();
         
         this.setLocationRelativeTo(this);
-        //setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("cloud.png")));
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/mitebot/mbot.png")));
         
         try {
             read();
@@ -114,7 +108,7 @@ public class login extends javax.swing.JFrame {
         jTextField5 = new javax.swing.JTextField();
         jPasswordField1 = new javax.swing.JPasswordField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Login Form");
         setResizable(false);
 

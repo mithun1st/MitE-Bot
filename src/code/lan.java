@@ -18,7 +18,8 @@ public class lan extends javax.swing.JFrame {
      */
     public lan() {
         initComponents();
-        //setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/espController/router.png")));
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/mitebot/mbot.png")));
+        
         this.setLocationRelativeTo(this);
     }
 

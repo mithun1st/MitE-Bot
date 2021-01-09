@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package mit.e.bot;
+package mitebot;
 
 import com.sun.glass.events.KeyEvent;
 import java.awt.event.ActionEvent;
@@ -14,6 +14,7 @@ import webCam.videoUI;
 import about.personal;
 import code.*;
 import iot.login;
+import java.awt.Toolkit;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -49,6 +50,17 @@ public class frm extends javax.swing.JFrame implements ActionListener{
     
     //-------------------------------</iot>
     
+        
+    String tems="";
+    String address="";
+    boolean lan=true;
+   
+    int delay=0;
+    Timer t=new Timer (delay,this);
+    
+    
+    cls o=new cls();
+        
     
     //-----------<iot>f
     public void dbCheck(){
@@ -56,7 +68,6 @@ public class frm extends javax.swing.JFrame implements ActionListener{
             cc=DriverManager.getConnection(url,uname,pw);
             ss=cc.createStatement();
             JOptionPane.showMessageDialog(jPanel1,"DataBase Conneced !","Connectivity",JOptionPane.INFORMATION_MESSAGE);  
-            
             try {
                 ss.executeQuery("Select * from mitebot where user=\"m2n\"");
             } catch (Exception e) {
@@ -100,17 +111,7 @@ public class frm extends javax.swing.JFrame implements ActionListener{
         
     //---------</iot>f
         
-        
-    String tems="";
-    String address="";
-    boolean lan=true;
-   
-    int delay=0;
-    Timer t=new Timer (delay,this);
     
-    
-    cls o=new cls();
-        
     
     @Override
     public void actionPerformed(ActionEvent ae) {
@@ -342,6 +343,9 @@ public class frm extends javax.swing.JFrame implements ActionListener{
     public frm() {
         initComponents();                
         this.setLocationRelativeTo(this);
+        
+        
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("mbot.png")));
         
         fEnable(false);
         
@@ -748,7 +752,6 @@ public class frm extends javax.swing.JFrame implements ActionListener{
         jTextField3.setForeground(new java.awt.Color(51, 51, 51));
         jTextField3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField3.setText("80");
-        jTextField3.setFocusable(false);
         jTextField3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTextField3MouseClicked(evt);
@@ -974,6 +977,11 @@ public class frm extends javax.swing.JFrame implements ActionListener{
         jMenu2.setForeground(new java.awt.Color(255, 255, 255));
         jMenu2.setText("Connection Mode");
         buttonGroup1.add(jMenu2);
+        jMenu2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu2MouseClicked(evt);
+            }
+        });
 
         buttonGroup2.add(jCheckBoxMenuItem1);
         jCheckBoxMenuItem1.setText("IOT - Internet Of Things");
@@ -1116,7 +1124,6 @@ public class frm extends javax.swing.JFrame implements ActionListener{
     }//GEN-LAST:event_jTextField3ActionPerformed
 
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
-        // TODO add your handling code here:
         
         if(jTextField2.getText().matches("xxx.xxx.xxx.xxx")||jTextField2.getText().matches("")||jTextField3.getText().matches("")){
             JOptionPane.showMessageDialog(jPanel1,"Enter The address Address & Port Number First.","Alert",JOptionPane.CANCEL_OPTION);
@@ -1145,20 +1152,29 @@ public class frm extends javax.swing.JFrame implements ActionListener{
                 jTextField6.setFocusable(false);
                 jTextField7.setFocusable(false);
                 jTextField8.setFocusable(false);
+                
+                if(!jRadioButtonMenuItem1.isSelected()){
+                    t.start();
+                }
 
                 if(lan){
                     address=jTextField2.getText()+":"+jTextField3.getText();
                 }
-                if(!jRadioButtonMenuItem1.isSelected()){
-                    t.start();
-                }
                 else{ //--------------------IOT Selected
-                    
+                    try {
+                        dbConfig();
+                        dbCheck();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }//------------------------IOT selected </>
                 
             }
             
             else{
+                jRadioButtonMenuItem1.doClick();
+                
+                
                 //gui
                 fEnable(false);
                 
@@ -1172,8 +1188,10 @@ public class frm extends javax.swing.JFrame implements ActionListener{
                 
                 //focus
                 jToggleButton2.setFocusable(true);
-                jTextField2.setFocusable(true);
-                jTextField3.setFocusable(true);
+                if(lan){
+                    jTextField2.setFocusable(true);
+                    jTextField3.setFocusable(true);
+                }
                 
                 jTextField4.setFocusable(true);
                 jTextField5.setFocusable(true);
@@ -1181,16 +1199,6 @@ public class frm extends javax.swing.JFrame implements ActionListener{
                 jTextField7.setFocusable(true);
                 jTextField8.setFocusable(true);
                 
-                
-                if(!jRadioButtonMenuItem1.isSelected()){
-                t.start();
-                jTextField4.setText("x x x");
-                jTextField7.setText("x x");
-                jTextField8.setText("x x");
-                }
-                else{//--------------------iot ! Selected
-                    
-                }//--------------------iot ! Selected </>
             }
         }  
         
@@ -1220,16 +1228,22 @@ public class frm extends javax.swing.JFrame implements ActionListener{
 
     private void jTextField2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField2MouseClicked
         // TODO add your handling code here:
-        if(!jToggleButton2.isSelected()){
+        if(!jToggleButton2.isSelected() && lan){
             jTextField2.setText("");
+        }
+        if(!lan){
+            jMenu7.doClick();
         }
         
     }//GEN-LAST:event_jTextField2MouseClicked
 
     private void jTextField3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField3MouseClicked
         // TODO add your handling code here:
-        if(!jToggleButton2.isSelected()){
+        if(!jToggleButton2.isSelected() && lan){
             jTextField3.setText("");
+        }
+        if(!lan){
+            jMenu7.doClick();
         }
     }//GEN-LAST:event_jTextField3MouseClicked
 
@@ -1355,12 +1369,13 @@ public class frm extends javax.swing.JFrame implements ActionListener{
         // TODO add your handling code here:
         
         t.stop();
-            
-        try {
-            cc.close();
-            ss.close();
-        } catch (Exception e) {
-        }
+        if(!lan){
+            try {
+                cc.close();
+                ss.close();
+            } catch (Exception e) {
+            }            
+        }   
         
         
         jTextField4.setText("x x x");
@@ -1481,33 +1496,45 @@ public class frm extends javax.swing.JFrame implements ActionListener{
 
     private void jCheckBoxMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem1ActionPerformed
         lan=false;
-
-        try {
-            dbConfig();
-            dbCheck();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        
+   
+        jTextField2.setFocusable(false);
+        jTextField3.setFocusable(false);
         
         jLabel2.setText("xx xx:");
         jLabel3.setText("xx:");
         
         jTextField2.setText("- - - - -");
         jTextField3.setText("- -");
+        
+        jTextField4.setText("x x x");
+        jTextField7.setText("x x");
+        jTextField8.setText("x x");
     }//GEN-LAST:event_jCheckBoxMenuItem1ActionPerformed
 
     private void jCheckBoxMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem2ActionPerformed
         // TODO add your handling code here:
         lan=true;
         
+        jTextField2.setFocusable(true);
+        jTextField3.setFocusable(true);
+        
         jLabel2.setText("IP Ad:");
         jLabel3.setText("Port:");
+        
+        jTextField2.setText("xxx.xxx.xxx.xxx");
+        jTextField3.setText("80");
         
         jTextField4.setText("x x x");
         jTextField7.setText("x x");
         jTextField8.setText("x x");
     }//GEN-LAST:event_jCheckBoxMenuItem2ActionPerformed
+
+    private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
+        // TODO add your handling code here:
+        if(jToggleButton2.isSelected()){
+            jToggleButton2.doClick();
+        }
+    }//GEN-LAST:event_jMenu2MouseClicked
 
     /**
      * @param args the command line arguments

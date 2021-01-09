@@ -1,5 +1,5 @@
 
-package mit.e.bot;
+package mitebot;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
