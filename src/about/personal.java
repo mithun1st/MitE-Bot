@@ -23,7 +23,7 @@ public class personal extends javax.swing.JFrame {
     public personal() {
         initComponents();
         this.setLocationRelativeTo(null);
-        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("per.png")));
+        //setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("per.png")));
     }
 
     /**
