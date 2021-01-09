@@ -8,12 +8,15 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 
 public class cls {
     
     //-----------------------------------------------------------transmit signal
-    public void transmit(String ip,String s,boolean lan){
+    public void transmit(String ip,String s,boolean lan,Statement ss){
         if(lan){
             try {
                 URL a = new URL("http://"+ip+"/"+s);
@@ -25,15 +28,19 @@ public class cls {
             System.out.println(">>\t"+"http://"+ip+"/"+s);
         }
         else{//-------------------------------------------------------------IOT
-            
+            try {
+                ss.executeUpdate("UPDATE mitebot set transmit=\""+s+"\" WHERE user=\"m2n\"");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
     
     
     //----------------------------------------------------------reveived signal
-    public String[] received(String ip, boolean lan){
+    public String[] received(String ip, boolean lan, Statement ss, ResultSet rr){
         int x=0,l=0;
-        String rcv="";
+        String rcv="###";
         String[] sa=new String[3];
         
         if(lan){            
@@ -54,9 +61,17 @@ public class cls {
             }
         }
         else{//-------------------------------------------------------------IOT
+            try {
+            rr = ss.executeQuery("select * from mitebot where user=\"m2n\"");
             
+            while(rr.next()){
+                rcv=rr.getString("received");
+            }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
-        
+        System.out.println(rcv);
         for (int y = 0; y < rcv.length(); y++) {
             if(rcv.charAt(y)=='#'){
                 sa[l]=rcv.substring(x, y);
