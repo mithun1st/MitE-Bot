@@ -109,7 +109,7 @@ public class login extends javax.swing.JFrame {
         jPasswordField1 = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Login Form");
+        setTitle("SQL Login Form");
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 102));
@@ -117,9 +117,19 @@ public class login extends javax.swing.JFrame {
 
         jTextField1.setFont(new java.awt.Font("DialogInput", 1, 18)); // NOI18N
         jTextField1.setNextFocusableComponent(jTextField2);
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
 
         jTextField2.setFont(new java.awt.Font("DialogInput", 1, 18)); // NOI18N
         jTextField2.setNextFocusableComponent(jTextField4);
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("OCR A Extended", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -146,10 +156,15 @@ public class login extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(153, 153, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Login Form");
+        jLabel4.setText("Database Hosing Information");
 
         jTextField4.setFont(new java.awt.Font("DialogInput", 1, 18)); // NOI18N
         jTextField4.setNextFocusableComponent(jPasswordField1);
+        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField4ActionPerformed(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("OCR A Extended", 1, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -161,6 +176,11 @@ public class login extends javax.swing.JFrame {
 
         jTextField5.setFont(new java.awt.Font("DialogInput", 1, 18)); // NOI18N
         jTextField5.setNextFocusableComponent(jButton1);
+        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField5ActionPerformed(evt);
+            }
+        });
 
         jPasswordField1.setFont(new java.awt.Font("DialogInput", 1, 18)); // NOI18N
         jPasswordField1.setNextFocusableComponent(jTextField5);
@@ -250,6 +270,7 @@ public class login extends javax.swing.JFrame {
 
     private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
         // TODO add your handling code here:
+        jButton1.doClick();
     }//GEN-LAST:event_jPasswordField1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -257,6 +278,26 @@ public class login extends javax.swing.JFrame {
         write(jTextField1.getText().trim(),jTextField2.getText().trim(),jTextField4.getText().trim(),jPasswordField1.getText().trim(),jTextField5.getText().trim());
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+        jButton1.doClick();
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+        jButton1.doClick();
+    }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+        // TODO add your handling code here:
+        jButton1.doClick();
+    }//GEN-LAST:event_jTextField4ActionPerformed
+
+    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+        // TODO add your handling code here:
+        jButton1.doClick();
+    }//GEN-LAST:event_jTextField5ActionPerformed
 
     /**
      * @param args the command line arguments

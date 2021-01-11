@@ -22,10 +22,10 @@ public class cls {
                 URL a = new URL("http://"+ip+"/"+s);
                 URLConnection b = a.openConnection();
                 b.getContentLength();  
+                System.out.println(">>\thttp://"+ip+"/"+s);
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            System.out.println(">>\t"+"http://"+ip+"/"+s);
         }
         else{//-------------------------------------------------------------IOT
             try {
@@ -34,6 +34,7 @@ public class cls {
                 e.printStackTrace();
             }
         }
+        System.out.println(">>\t"+s);
     }
     
     
@@ -71,7 +72,7 @@ public class cls {
                 e.printStackTrace();
             }
         }
-        System.out.println(rcv);
+        System.out.println("<<\t"+rcv);
         for (int y = 0; y < rcv.length(); y++) {
             if(rcv.charAt(y)=='#'){
                 sa[l]=rcv.substring(x, y);

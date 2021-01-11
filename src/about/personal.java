@@ -56,7 +56,7 @@ public class personal extends javax.swing.JFrame {
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/about/im.jpg"))); // NOI18N
-        jLabel1.setToolTipText("http://facebook.com/mithun1st");
+        jLabel1.setToolTipText("github.com/mithun1st");
 
         jLabel2.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));

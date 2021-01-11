@@ -69,15 +69,18 @@ public class frm extends javax.swing.JFrame implements ActionListener{
             ss=cc.createStatement();
             JOptionPane.showMessageDialog(jPanel1,"DataBase Conneced !","Connectivity",JOptionPane.INFORMATION_MESSAGE);  
             try {
-                ss.executeQuery("Select * from mitebot where user=\"m2n\"");
-            } catch (Exception e) {
-                ss.executeUpdate("Create Table mitebot (user varchar(20),transmit varchar(20),received varchar(20))");
+                ss.executeQuery("Select * from mitebot");
+            } catch (SQLException e) {
+                ss.executeUpdate("Create Table mitebot (user varchar(20),transmit varchar(20),received varchar(50))");
                 ss.executeUpdate("INSERT INTO mitebot VALUES (\"m2n\",\"mh_mithun\",\"s1#s2#s3#\");");
             }
             
         } catch (SQLException e) {
             //e.printStackTrace();
-            JOptionPane.showMessageDialog(jPanel1,"DataBase Connection Failed !","Connectivity",JOptionPane.ERROR_MESSAGE);
+            jMenu7.doClick();
+            JOptionPane.showMessageDialog(jPanel1,"DataBase Connection Failed !\nCheck DataBase Configration.","Connectivity",JOptionPane.ERROR_MESSAGE);
+            jToggleButton2.doClick();
+            new login().setVisible(true);
         }
     }
         
@@ -100,7 +103,12 @@ public class frm extends javax.swing.JFrame implements ActionListener{
             System.out.println(server);
             System.out.println(database);
             System.out.println(uname);
-            System.out.println(pw);
+            if(pw.isEmpty()){
+                System.out.println("******");
+            }
+            else{
+                System.out.println(pw);
+            }
             System.out.println(port);
 
         } catch (IOException e) {
@@ -126,11 +134,14 @@ public class frm extends javax.swing.JFrame implements ActionListener{
         
     
     public void refreshRate(int d){
+        delay=d;
         if(jToggleButton2.isSelected()){
             t.stop();
-            delay=d;
             t=new Timer(delay,this);
             t.start();
+        }
+        else{
+            t=new Timer(delay,this);
         }
     }
     
@@ -138,7 +149,7 @@ public class frm extends javax.swing.JFrame implements ActionListener{
         String str = "";
         String[] s=new String[12];
         
-        s[0]="Ex: button  ________   (shortcutKey) :   ____________   'send data'\n\n\n";
+        s[0]="Ex: BUTTON  _______   (SHORTCUT KEY) :   ________   'TRANSMIT DATA'\n\n\n";
         
         s[1]="Terminal  _________  (ENTER) / (Click)  ______  'typing-text-as-commmand'\n\n";
                
@@ -410,6 +421,7 @@ public class frm extends javax.swing.JFrame implements ActionListener{
         jCheckBoxMenuItem2 = new javax.swing.JCheckBoxMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jRadioButtonMenuItem1 = new javax.swing.JRadioButtonMenuItem();
+        jRadioButtonMenuItem6 = new javax.swing.JRadioButtonMenuItem();
         jRadioButtonMenuItem2 = new javax.swing.JRadioButtonMenuItem();
         jRadioButtonMenuItem3 = new javax.swing.JRadioButtonMenuItem();
         jRadioButtonMenuItem4 = new javax.swing.JRadioButtonMenuItem();
@@ -425,10 +437,11 @@ public class frm extends javax.swing.JFrame implements ActionListener{
         jMenuItem1.setText("jMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Mit-E Bot Controler");
+        setTitle("Mit-E Bot Controller    (Develop by Mithun)");
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(153, 153, 153));
+        jPanel1.setToolTipText("Mahadi Hassan");
         jPanel1.setPreferredSize(new java.awt.Dimension(550, 300));
         jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -729,6 +742,7 @@ public class frm extends javax.swing.JFrame implements ActionListener{
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("IP Ad: ");
 
         jTextField2.setBackground(new java.awt.Color(204, 204, 204));
@@ -765,6 +779,7 @@ public class frm extends javax.swing.JFrame implements ActionListener{
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("Port: ");
 
         jToggleButton2.setBackground(new java.awt.Color(204, 204, 204));
@@ -784,10 +799,9 @@ public class frm extends javax.swing.JFrame implements ActionListener{
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jPanel3Layout.createSequentialGroup()
@@ -838,6 +852,7 @@ public class frm extends javax.swing.JFrame implements ActionListener{
         jTextField5.setText("Sensor 1");
         jTextField5.setBorder(null);
         jTextField5.setCaretColor(new java.awt.Color(255, 255, 255));
+        jTextField5.setVerifyInputWhenFocusTarget(false);
         jTextField5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTextField5MouseClicked(evt);
@@ -851,6 +866,7 @@ public class frm extends javax.swing.JFrame implements ActionListener{
         jTextField6.setText("Sensor 2");
         jTextField6.setBorder(null);
         jTextField6.setCaretColor(new java.awt.Color(255, 255, 255));
+        jTextField6.setVerifyInputWhenFocusTarget(false);
         jTextField6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTextField6MouseClicked(evt);
@@ -880,21 +896,18 @@ public class frm extends javax.swing.JFrame implements ActionListener{
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTextField4)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(16, 16, 16))
+                        .addGap(83, 83, 83)
+                        .addComponent(jLabel4))
                     .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextField7, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                            .addComponent(jTextField5))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGap(83, 83, 83)
-                                .addComponent(jLabel4)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jTextField6))))
                 .addGap(6, 6, 6))
         );
         jPanel4Layout.setVerticalGroup(
@@ -943,7 +956,7 @@ public class frm extends javax.swing.JFrame implements ActionListener{
         jMenu1.setForeground(new java.awt.Color(255, 255, 255));
         jMenu1.setText("File");
 
-        jMenu6.setText("Arduino Code (Example)");
+        jMenu6.setText("Arduino Code (example)");
 
         jMenuItem6.setText("IOT");
         jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
@@ -1016,6 +1029,15 @@ public class frm extends javax.swing.JFrame implements ActionListener{
             }
         });
         jMenu3.add(jRadioButtonMenuItem1);
+
+        buttonGroup1.add(jRadioButtonMenuItem6);
+        jRadioButtonMenuItem6.setText(".1 sec");
+        jRadioButtonMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuItem6ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jRadioButtonMenuItem6);
 
         buttonGroup1.add(jRadioButtonMenuItem2);
         jRadioButtonMenuItem2.setText(".5 sec");
@@ -1131,6 +1153,10 @@ public class frm extends javax.swing.JFrame implements ActionListener{
         }
         else{
             if(jToggleButton2.isSelected()){
+                
+                if(!jRadioButtonMenuItem1.isSelected()){
+                    t.start();
+                }
                 //gui
                 fEnable(true);
                 
@@ -1153,13 +1179,16 @@ public class frm extends javax.swing.JFrame implements ActionListener{
                 jTextField7.setFocusable(false);
                 jTextField8.setFocusable(false);
                 
-                if(!jRadioButtonMenuItem1.isSelected()){
-                    t.start();
-                }
+                jTextField5.setBorder(null);
+                jTextField6.setBorder(null);
+        
+        
 
                 if(lan){
                     address=jTextField2.getText()+":"+jTextField3.getText();
+                    System.out.println(address);
                 }
+                
                 else{ //--------------------IOT Selected
                     try {
                         dbConfig();
@@ -1171,14 +1200,37 @@ public class frm extends javax.swing.JFrame implements ActionListener{
                 
             }
             
-            else{
-                jRadioButtonMenuItem1.doClick();
-                
-                
+            else{//----------------------not seleted
+                if(!lan){
+                try {
+                    cc.close();
+                    ss.close();
+                } catch (Exception e) {
+                }            
+        } 
+                if(!jRadioButtonMenuItem1.isSelected()){
+                    t.stop();
+                }
+
                 //gui
-                fEnable(false);
-                
                 jToggleButton2.setText("Connect");
+                if(lan){
+                    jTextField2.setFocusable(true);
+                    jTextField3.setFocusable(true);
+                }
+                fEnable(false);
+                jRadioButton1.setSelected(false);
+                jRadioButton2.setSelected(false);
+                
+                jToggleButton1.setSelected(false);
+                jToggleButton3.setSelected(false);
+                
+                //sensor
+                jTextField4.setText("x x x");
+                jTextField7.setText("x x");
+                jTextField8.setText("x x");
+                
+                
                 jTextField2.setEnabled(true);
                 jTextField2.setEditable(true);
                 
@@ -1188,10 +1240,6 @@ public class frm extends javax.swing.JFrame implements ActionListener{
                 
                 //focus
                 jToggleButton2.setFocusable(true);
-                if(lan){
-                    jTextField2.setFocusable(true);
-                    jTextField3.setFocusable(true);
-                }
                 
                 jTextField4.setFocusable(true);
                 jTextField5.setFocusable(true);
@@ -1216,14 +1264,18 @@ public class frm extends javax.swing.JFrame implements ActionListener{
 
     private void jTextField5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField5MouseClicked
         // TODO add your handling code here:hh
-        jTextField5.setEnabled(true);
-        jTextField5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
+        if(!jToggleButton2.isSelected()){
+            jTextField5.setEnabled(true);
+            jTextField5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));            
+        }
     }//GEN-LAST:event_jTextField5MouseClicked
 
     private void jTextField6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField6MouseClicked
         // TODO add your handling code here:hh
-        jTextField6.setEnabled(true);
-        jTextField6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
+        if(!jToggleButton2.isSelected()){
+            jTextField6.setEnabled(true);
+            jTextField6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
+        }
     }//GEN-LAST:event_jTextField6MouseClicked
 
     private void jTextField2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField2MouseClicked
@@ -1231,7 +1283,7 @@ public class frm extends javax.swing.JFrame implements ActionListener{
         if(!jToggleButton2.isSelected() && lan){
             jTextField2.setText("");
         }
-        if(!lan){
+        if(!lan && !jToggleButton2.isSelected()){
             jMenu7.doClick();
         }
         
@@ -1242,7 +1294,7 @@ public class frm extends javax.swing.JFrame implements ActionListener{
         if(!jToggleButton2.isSelected() && lan){
             jTextField3.setText("");
         }
-        if(!lan){
+        if(!lan && !jToggleButton2.isSelected()){
             jMenu7.doClick();
         }
     }//GEN-LAST:event_jTextField3MouseClicked
@@ -1348,7 +1400,7 @@ public class frm extends javax.swing.JFrame implements ActionListener{
     private void jSlider2StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSlider2StateChanged
         // TODO add your handling code here:
         try {
-            Thread.sleep(50);
+            Thread.sleep(100);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -1358,7 +1410,7 @@ public class frm extends javax.swing.JFrame implements ActionListener{
     private void jSlider1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSlider1StateChanged
         // TODO add your handling code here:
         try {
-            Thread.sleep(50);
+            Thread.sleep(100);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -1369,13 +1421,6 @@ public class frm extends javax.swing.JFrame implements ActionListener{
         // TODO add your handling code here:
         
         t.stop();
-        if(!lan){
-            try {
-                cc.close();
-                ss.close();
-            } catch (Exception e) {
-            }            
-        }   
         
         
         jTextField4.setText("x x x");
@@ -1405,7 +1450,7 @@ public class frm extends javax.swing.JFrame implements ActionListener{
 
     private void jButton1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MousePressed
         // TODO add your handling code here:
-        if(!tems.matches("u1")){
+        if(!tems.matches("u1") && jToggleButton2.isSelected()){
             o.transmit(address,"u1",lan,ss);
             tems="u1";
         }
@@ -1413,7 +1458,7 @@ public class frm extends javax.swing.JFrame implements ActionListener{
 
     private void jButton2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MousePressed
         // TODO add your handling code here:
-            if(!tems.matches("d1")){
+            if(!tems.matches("d1")&& jToggleButton2.isSelected()){
                 o.transmit(address,"d1",lan,ss);
                 tems="d1";
             }
@@ -1421,7 +1466,7 @@ public class frm extends javax.swing.JFrame implements ActionListener{
 
     private void jButton3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MousePressed
         // TODO add your handling code here:
-        if(!tems.matches("l1")){
+        if(!tems.matches("l1")&& jToggleButton2.isSelected()){
             o.transmit(address,"l1",lan,ss);
             tems="l1";
         }
@@ -1429,7 +1474,7 @@ public class frm extends javax.swing.JFrame implements ActionListener{
 
     private void jButton4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MousePressed
         // TODO add your handling code here:
-        if(!tems.matches("r1")){
+        if(!tems.matches("r1")&& jToggleButton2.isSelected()){
             o.transmit(address,"r1",lan,ss);
             tems="r1";
         }
@@ -1437,26 +1482,34 @@ public class frm extends javax.swing.JFrame implements ActionListener{
 
     private void jButton1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseReleased
         // TODO add your handling code here:
-        o.transmit(address,"u0",lan,ss);
-        tems="u0";
+        if(jToggleButton2.isSelected()){
+            o.transmit(address,"u0",lan,ss);
+            tems="u0";
+        }
     }//GEN-LAST:event_jButton1MouseReleased
 
     private void jButton2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseReleased
         // TODO add your handling code here:
-        o.transmit(address,"d0",lan,ss);
-        tems="d0";
+        if(jToggleButton2.isSelected()){
+            o.transmit(address,"d0",lan,ss);
+            tems="d0";
+        }
     }//GEN-LAST:event_jButton2MouseReleased
 
     private void jButton3MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseReleased
         // TODO add your handling code here:
-        o.transmit(address,"l0",lan,ss);
-        tems="l0";
+        if(jToggleButton2.isSelected()){
+            o.transmit(address,"l0",lan,ss);
+            tems="l0";
+        }
     }//GEN-LAST:event_jButton3MouseReleased
 
     private void jButton4MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseReleased
         // TODO add your handling code here:
-        o.transmit(address,"r0",lan,ss);
-        tems="r0";
+        if(jToggleButton2.isSelected()){
+            o.transmit(address,"r0",lan,ss);
+            tems="r0";
+        }  
     }//GEN-LAST:event_jButton4MouseReleased
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
@@ -1491,6 +1544,9 @@ public class frm extends javax.swing.JFrame implements ActionListener{
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
         // TODO add your handling code here:
+        if(jToggleButton2.isSelected()){
+            jToggleButton2.doClick();
+        }
         new login().setVisible(true);
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
@@ -1500,11 +1556,11 @@ public class frm extends javax.swing.JFrame implements ActionListener{
         jTextField2.setFocusable(false);
         jTextField3.setFocusable(false);
         
-        jLabel2.setText("xx xx:");
-        jLabel3.setText("xx:");
+        jLabel2.setText("Server:");
+        jLabel3.setText("IOT:");
         
-        jTextField2.setText("- - - - -");
-        jTextField3.setText("- -");
+        jTextField2.setText("Configure Your");
+        jTextField3.setText("DB");
         
         jTextField4.setText("x x x");
         jTextField7.setText("x x");
@@ -1535,6 +1591,11 @@ public class frm extends javax.swing.JFrame implements ActionListener{
             jToggleButton2.doClick();
         }
     }//GEN-LAST:event_jMenu2MouseClicked
+
+    private void jRadioButtonMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem6ActionPerformed
+        // TODO add your handling code here:
+        refreshRate(100);
+    }//GEN-LAST:event_jRadioButtonMenuItem6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1614,6 +1675,7 @@ public class frm extends javax.swing.JFrame implements ActionListener{
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem3;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem4;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem5;
+    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem6;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JSlider jSlider1;
     private javax.swing.JSlider jSlider2;
