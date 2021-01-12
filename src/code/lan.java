@@ -6,7 +6,9 @@
 package code;
 
 import java.awt.Toolkit;
-
+import java.awt.datatransfer.StringSelection;
+import java.awt.Toolkit;
+import java.awt.datatransfer.Clipboard;
 /**
  *
  * @author Mahadi Hassan
@@ -36,9 +38,10 @@ public class lan extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Example Code For NodeMCU LAN Connection");
+        setTitle("Example Code For Arduino (NodeMCU)");
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(102, 102, 102));
@@ -49,7 +52,7 @@ public class lan extends javax.swing.JFrame {
         jTextArea2.setColumns(20);
         jTextArea2.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jTextArea2.setRows(5);
-        jTextArea2.setText("#include <ESP8266WiFi.h>\n\n//Enter the Name & Password of your Wi-Fi\nconst char* ssid = \"Mahadi Hassan\";\nconst char* pass = \"mithun1st\";\n\nWiFiServer server(80);\n\nvoid setup() {\n\n  Serial.begin(115200);\n  wifiSetup(ssid, pass);\n\n}\n\n\nvoid loop() {\n\n  String sensor1 = \"hot\";\n  String sensor2 = \"cold\";\n  double  sensor3 = 3.1415;\n\n  transmitData(sensor1, sensor2, (String)sensor3);\n\n  String str = receivedData();\n\n\n  if (str != \"\\0\") {\n    Serial.println(\">>\\t\" + str);\n  }\n\n}\n\n\n\n\n\n\n\n//----- Do Not Change Anything If Unnecessary !! -----\n\nvoid wifiSetup(String s, String p) {\n  Serial.println(\"\\nConnecting to \" + s);\n  WiFi.begin(s, p);\n  while (WiFi.status() != WL_CONNECTED) {\n    delay(500);\n    Serial.print(\".\");\n  }\n  Serial.println(\"\\nWiFi connected\");\n  server.begin();\n  Serial.println(\"Server started\");\n  Serial.println(WiFi.localIP());\n}\nString gs1 = \"\", gs2 = \"\", gs3 = \"\";\nString receivedData() {\n  WiFiClient client = server.available();\n  if (client) {\n    String req = client.readStringUntil('\\r');\n    req = req.substring(5, req.length() - 9);\n    client.flush();\n    String web = \"HTTP/1.1 200 OK\\r\\nContent-Type: text/html\\r\\n\\r\\n\";\n    web += gs1 + \"#\" + gs2 + \"#\" + gs3 + \"#\\r\\n\";\n    client.print(web);\n    return req;\n  }\n}\nvoid transmitData(String s1, String s2, String s3) {\n  gs1 = s1;\n  gs2 = s2;\n  gs3 = s3;\n}");
+        jTextArea2.setText("#include <ESP8266WiFi.h>\n\n//Enter the Name & Password of your Wi-Fi\nconst char* ssid = \"Mahadi Hassan\";\nconst char* pass = \"mithun1st\";\n\nWiFiServer server(80);\n\nvoid setup() {\n\n  pinMode(LED_BUILTIN, OUTPUT);\n\n  Serial.begin(115200);\n  wifiSetup(ssid, pass);\n\n}\n\n\nvoid loop() {\n\n  /*    transmitData(p1, p2, p3);\n\n    this function have three parameter,\n    you can transmit three kind of data\n    to users as a String Variable.\n    if u have (int or double) type data\n    like 'sensor3' just, simply convert\n    it to String like in this example.\n\n  */\n\n\n  String sensor1 = \"temperature\";\n  String sensor2 = \"humidity\";\n  double  sensor3 = 3.1415;\n\n  transmitData(sensor1, sensor2, (String)sensor3);\n\n\n\n\n  /*      receivedData();\n\n     this function return a String value\n     as a received data from users. you\n     can simply store the data in a String\n     variable, ex: \"String var=receivedData();\"\n\n  */\n\n\n  String str = receivedData();\n\n  if (str == \"a_on\") {\n    digitalWrite(LED_BUILTIN, HIGH);\n    Serial.println(\">>\\t\" + str);\n  }\n  else if (str == \"a_off\") {\n    digitalWrite(LED_BUILTIN, LOW);\n    Serial.println(\">>\\t\" + str);\n  }\n  else if (str != \"\\0\") {\n    Serial.println(\">>\\t\" + str);\n  }\n\n}\n\n\n\n\n\n\n\n\n\n\n//----- Do Not Change Anything If Unnecessary !! -----\n\nvoid wifiSetup(String s, String p) {\n  Serial.println(\"\\nConnecting to \" + s);\n  WiFi.begin(s, p);\n  while (WiFi.status() != WL_CONNECTED) {\n    delay(500);\n    Serial.print(\".\");\n  }\n  Serial.println(\"\\nWiFi connected\");\n  server.begin();\n  Serial.println(\"Server started\");\n  Serial.println(WiFi.localIP());\n}\nString gs1 = \"\", gs2 = \"\", gs3 = \"\";\nString receivedData() {\n  WiFiClient client = server.available();\n  if (client) {\n    String req = client.readStringUntil('\\r');\n    req = req.substring(5, req.length() - 9);\n    client.flush();\n    String web = \"HTTP/1.1 200 OK\\r\\nContent-Type: text/html\\r\\n\\r\\n\";\n    web += gs1 + \"#\" + gs2 + \"#\" + gs3 + \"#\\r\\n\";\n    client.print(web);\n    return req;\n  }\n}\nvoid transmitData(String s1, String s2, String s3) {\n  gs1 = s1;\n  gs2 = s2;\n  gs3 = s3;\n}");
         jTextArea2.setAutoscrolls(false);
         jTextArea2.setCaretPosition(0);
         jTextArea2.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
@@ -61,6 +64,14 @@ public class lan extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Local Area Network");
 
+        jButton1.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jButton1.setText("Copy To Clipboard");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -70,6 +81,10 @@ public class lan extends javax.swing.JFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 426, Short.MAX_VALUE)
                 .addContainerGap())
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(157, 157, 157)
+                .addComponent(jButton1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -77,7 +92,9 @@ public class lan extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 431, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -89,11 +106,19 @@ public class lan extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 506, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        String myString = jTextArea2.getText();
+        StringSelection stringSelection = new StringSelection(myString);
+        Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+        clipboard.setContents(stringSelection, null);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -138,6 +163,7 @@ public class lan extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;

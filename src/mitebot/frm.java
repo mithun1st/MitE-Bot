@@ -441,7 +441,6 @@ public class frm extends javax.swing.JFrame implements ActionListener{
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(153, 153, 153));
-        jPanel1.setToolTipText("Mahadi Hassan");
         jPanel1.setPreferredSize(new java.awt.Dimension(550, 300));
         jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -956,7 +955,7 @@ public class frm extends javax.swing.JFrame implements ActionListener{
         jMenu1.setForeground(new java.awt.Color(255, 255, 255));
         jMenu1.setText("File");
 
-        jMenu6.setText("Arduino Code (example)");
+        jMenu6.setText("Example Code");
 
         jMenuItem6.setText("IOT");
         jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
