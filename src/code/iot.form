@@ -94,9 +94,8 @@
                   <Font name="Dialog" size="12" style="0"/>
                 </Property>
                 <Property name="rows" type="int" value="5"/>
-                <Property name="text" type="java.lang.String" value="&#xa;/*&#xa;&#x9;write data from database&#xa;*/&#xa;&#xa;UPDATE mitebot set received=&quot;sensor1#sensor2#sensor3#&quot;&#xa;&#xa;//    or&#xa;&#xa;UPDATE mitebot set received=&quot;sensor1#sensor2#sensor3#&quot; WHERE user = &quot;m2n&quot;&#xa;&#xa;&#xa;&#xa;&#xa;/*&#xa;&#x9;read data from database&#xa;*/&#xa;&#xa;SELECT transmit FROM mitebot&#xa;&#xa;//    or&#xa;&#xa;SELECT * FROM mitebot&#xa;&#xa;"/>
+                <Property name="text" type="java.lang.String" value="&#xa;/*&#xa;&#x9;write data into database &#xa;    don&apos;t break this format &quot;s1#s2#s3#&quot;, this column must&#xa;    have to contain three &apos;#&apos; symbol.&#xa;*/&#xa;&#xa;UPDATE mitebot set received=&quot;sensor1#sensor2#sensor3#&quot;&#xa;&#xa;//    or&#xa;&#xa;UPDATE mitebot set received=&quot;sensor1#sensor2#sensor3#&quot; WHERE user = &quot;m2n&quot;&#xa;&#xa;&#xa;&#xa;&#xa;/*&#xa;&#x9;read data from database&#xa;*/&#xa;&#xa;SELECT transmit FROM mitebot &#xa;&#xa;//    or&#xa;&#xa;SELECT transmit FROM mitebot where user=&quot;m2n&quot;&#xa;&#xa;"/>
                 <Property name="autoscrolls" type="boolean" value="false"/>
-                <Property name="caretPosition" type="int" value="0"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Text Cursor"/>
                 </Property>

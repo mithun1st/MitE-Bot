@@ -52,9 +52,8 @@ public class iot extends javax.swing.JFrame {
         jTextArea2.setColumns(20);
         jTextArea2.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jTextArea2.setRows(5);
-        jTextArea2.setText("\n/*\n\twrite data from database\n*/\n\nUPDATE mitebot set received=\"sensor1#sensor2#sensor3#\"\n\n//    or\n\nUPDATE mitebot set received=\"sensor1#sensor2#sensor3#\" WHERE user = \"m2n\"\n\n\n\n\n/*\n\tread data from database\n*/\n\nSELECT transmit FROM mitebot\n\n//    or\n\nSELECT * FROM mitebot\n\n");
+        jTextArea2.setText("\n/*\n\twrite data into database \n    don't break this format \"s1#s2#s3#\", this column must\n    have to contain three '#' symbol.\n*/\n\nUPDATE mitebot set received=\"sensor1#sensor2#sensor3#\"\n\n//    or\n\nUPDATE mitebot set received=\"sensor1#sensor2#sensor3#\" WHERE user = \"m2n\"\n\n\n\n\n/*\n\tread data from database\n*/\n\nSELECT transmit FROM mitebot \n\n//    or\n\nSELECT transmit FROM mitebot where user=\"m2n\"\n\n");
         jTextArea2.setAutoscrolls(false);
-        jTextArea2.setCaretPosition(0);
         jTextArea2.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         jTextArea2.setOpaque(false);
         jScrollPane2.setViewportView(jTextArea2);
