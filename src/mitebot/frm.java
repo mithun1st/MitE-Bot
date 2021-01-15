@@ -404,11 +404,11 @@ public class frm extends javax.swing.JFrame implements ActionListener{
         jToggleButton2 = new javax.swing.JToggleButton();
         jPanel4 = new javax.swing.JPanel();
         jTextField4 = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
         jTextField5 = new javax.swing.JTextField();
         jTextField6 = new javax.swing.JTextField();
         jTextField7 = new javax.swing.JTextField();
         jTextField8 = new javax.swing.JTextField();
+        jTextField9 = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu6 = new javax.swing.JMenu();
@@ -511,6 +511,7 @@ public class frm extends javax.swing.JFrame implements ActionListener{
         jToggleButton3.setBackground(new java.awt.Color(153, 153, 153));
         jToggleButton3.setForeground(new java.awt.Color(51, 51, 51));
         jToggleButton3.setText("Button 4");
+        jToggleButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jToggleButton3.setFocusPainted(false);
         jToggleButton3.setFocusable(false);
         jToggleButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -522,6 +523,7 @@ public class frm extends javax.swing.JFrame implements ActionListener{
         jToggleButton1.setBackground(new java.awt.Color(153, 153, 153));
         jToggleButton1.setForeground(new java.awt.Color(51, 51, 51));
         jToggleButton1.setText("Button 3");
+        jToggleButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jToggleButton1.setFocusPainted(false);
         jToggleButton1.setFocusable(false);
         jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -533,6 +535,7 @@ public class frm extends javax.swing.JFrame implements ActionListener{
         jRadioButton2.setBackground(new java.awt.Color(153, 153, 153));
         jRadioButton2.setForeground(new java.awt.Color(51, 51, 51));
         jRadioButton2.setText("Button 2");
+        jRadioButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jRadioButton2.setFocusPainted(false);
         jRadioButton2.setFocusable(false);
         jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -544,6 +547,7 @@ public class frm extends javax.swing.JFrame implements ActionListener{
         jRadioButton1.setBackground(new java.awt.Color(153, 153, 153));
         jRadioButton1.setForeground(new java.awt.Color(51, 51, 51));
         jRadioButton1.setText("Button 1");
+        jRadioButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jRadioButton1.setFocusPainted(false);
         jRadioButton1.setFocusable(false);
         jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -578,6 +582,7 @@ public class frm extends javax.swing.JFrame implements ActionListener{
         jButton4.setBackground(new java.awt.Color(153, 153, 153));
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
         jButton4.setText(">");
+        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton4.setFocusPainted(false);
         jButton4.setFocusable(false);
         jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -592,6 +597,7 @@ public class frm extends javax.swing.JFrame implements ActionListener{
         jButton2.setBackground(new java.awt.Color(153, 153, 153));
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("v");
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton2.setFocusPainted(false);
         jButton2.setFocusable(false);
         jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -606,6 +612,7 @@ public class frm extends javax.swing.JFrame implements ActionListener{
         jButton1.setBackground(new java.awt.Color(153, 153, 153));
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("^");
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.setFocusPainted(false);
         jButton1.setFocusable(false);
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -620,6 +627,7 @@ public class frm extends javax.swing.JFrame implements ActionListener{
         jButton3.setBackground(new java.awt.Color(153, 153, 153));
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("<");
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton3.setFocusPainted(false);
         jButton3.setFocusable(false);
         jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -677,6 +685,7 @@ public class frm extends javax.swing.JFrame implements ActionListener{
 
         jButton5.setBackground(new java.awt.Color(180, 180, 180));
         jButton5.setText("Send");
+        jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton5.setFocusPainted(false);
         jButton5.setFocusable(false);
         jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -785,6 +794,7 @@ public class frm extends javax.swing.JFrame implements ActionListener{
         jToggleButton2.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
         jToggleButton2.setForeground(new java.awt.Color(0, 102, 0));
         jToggleButton2.setText("Connect");
+        jToggleButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jToggleButton2.setFocusPainted(false);
         jToggleButton2.setFocusable(false);
         jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -834,16 +844,6 @@ public class frm extends javax.swing.JFrame implements ActionListener{
         jTextField4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField4.setText("x x x");
 
-        jLabel4.setFont(new java.awt.Font("DialogInput", 0, 12)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Display");
-        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel4MouseClicked(evt);
-            }
-        });
-
         jTextField5.setBackground(new java.awt.Color(102, 102, 102));
         jTextField5.setFont(new java.awt.Font("DialogInput", 0, 12)); // NOI18N
         jTextField5.setForeground(new java.awt.Color(204, 204, 204));
@@ -851,6 +851,7 @@ public class frm extends javax.swing.JFrame implements ActionListener{
         jTextField5.setText("Sensor 1");
         jTextField5.setBorder(null);
         jTextField5.setCaretColor(new java.awt.Color(255, 255, 255));
+        jTextField5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jTextField5.setVerifyInputWhenFocusTarget(false);
         jTextField5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -865,6 +866,7 @@ public class frm extends javax.swing.JFrame implements ActionListener{
         jTextField6.setText("Sensor 2");
         jTextField6.setBorder(null);
         jTextField6.setCaretColor(new java.awt.Color(255, 255, 255));
+        jTextField6.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jTextField6.setVerifyInputWhenFocusTarget(false);
         jTextField6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -886,18 +888,31 @@ public class frm extends javax.swing.JFrame implements ActionListener{
         jTextField8.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField8.setText("x x");
 
+        jTextField9.setBackground(new java.awt.Color(102, 102, 102));
+        jTextField9.setFont(new java.awt.Font("DialogInput", 0, 12)); // NOI18N
+        jTextField9.setForeground(new java.awt.Color(204, 204, 204));
+        jTextField9.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField9.setText("Display");
+        jTextField9.setBorder(null);
+        jTextField9.setCaretColor(new java.awt.Color(255, 255, 255));
+        jTextField9.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jTextField9.setVerifyInputWhenFocusTarget(false);
+        jTextField9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField9MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField4)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(83, 83, 83)
-                        .addComponent(jLabel4))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jTextField9)
+                    .addComponent(jTextField4, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jTextField7, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
                             .addComponent(jTextField5))
@@ -913,10 +928,10 @@ public class frm extends javax.swing.JFrame implements ActionListener{
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(6, 6, 6)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -924,7 +939,7 @@ public class frm extends javax.swing.JFrame implements ActionListener{
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -941,13 +956,13 @@ public class frm extends javax.swing.JFrame implements ActionListener{
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(2, 2, 2))
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jMenuBar1.setBackground(new java.awt.Color(51, 51, 51));
@@ -1174,11 +1189,13 @@ public class frm extends javax.swing.JFrame implements ActionListener{
                 
                 jTextField4.setFocusable(false);
                 jTextField5.setFocusable(false);
+                jTextField9.setFocusable(false);
                 jTextField6.setFocusable(false);
                 jTextField7.setFocusable(false);
                 jTextField8.setFocusable(false);
                 
                 jTextField5.setBorder(null);
+                jTextField9.setBorder(null);
                 jTextField6.setBorder(null);
         
         
@@ -1242,6 +1259,7 @@ public class frm extends javax.swing.JFrame implements ActionListener{
                 
                 jTextField4.setFocusable(true);
                 jTextField5.setFocusable(true);
+                jTextField9.setFocusable(true);
                 jTextField6.setFocusable(true);
                 jTextField7.setFocusable(true);
                 jTextField8.setFocusable(true);
@@ -1255,11 +1273,6 @@ public class frm extends javax.swing.JFrame implements ActionListener{
         // TODO add your handling code here:
         o.transmit(address,jTextField1.getText(),lan,ss);
     }//GEN-LAST:event_jButton5ActionPerformed
-
-    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_jLabel4MouseClicked
 
     private void jTextField5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField5MouseClicked
         // TODO add your handling code here:hh
@@ -1596,6 +1609,14 @@ public class frm extends javax.swing.JFrame implements ActionListener{
         refreshRate(100);
     }//GEN-LAST:event_jRadioButtonMenuItem6ActionPerformed
 
+    private void jTextField9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField9MouseClicked
+        // TODO add your handling code here:
+        if(!jToggleButton2.isSelected()){
+            jTextField9.setEnabled(true);
+            jTextField9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));            
+        }
+    }//GEN-LAST:event_jTextField9MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -1644,7 +1665,6 @@ public class frm extends javax.swing.JFrame implements ActionListener{
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -1686,6 +1706,7 @@ public class frm extends javax.swing.JFrame implements ActionListener{
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
+    private javax.swing.JTextField jTextField9;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JToggleButton jToggleButton2;
     private javax.swing.JToggleButton jToggleButton3;
