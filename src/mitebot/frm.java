@@ -63,6 +63,32 @@ public class frm extends javax.swing.JFrame implements ActionListener{
         
     
     //-----------<iot>f
+    String s1="",s2="",s3="",s4="";
+    public void buttonRemark() throws ClassNotFoundException{
+        
+        try {
+            FileInputStream f=new FileInputStream("button.dat");
+            ObjectInputStream o=new ObjectInputStream(f);
+            //jdbc:mysql://sql12.freemysqlhosting.net:3306/sql12361343
+            s1=(String) o.readObject();
+            s2=(String) o.readObject();
+            s3=(String) o.readObject();
+            s4=(String) o.readObject();
+            
+            o.close();
+            
+            jRadioButton1.setText(s1);
+            jRadioButton2.setText(s2);
+            jToggleButton1.setText(s3);
+            jToggleButton3.setText(s4);
+            
+        } catch (IOException e) {
+            
+            e.printStackTrace();
+        }
+    }
+    
+    //--
     public void dbCheck(){
         try {
             cc=DriverManager.getConnection(url,uname,pw);
@@ -414,6 +440,7 @@ public class frm extends javax.swing.JFrame implements ActionListener{
         jMenu6 = new javax.swing.JMenu();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
+        jMenuItem9 = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
@@ -562,8 +589,10 @@ public class frm extends javax.swing.JFrame implements ActionListener{
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jToggleButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jRadioButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jRadioButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jToggleButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jRadioButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -989,6 +1018,14 @@ public class frm extends javax.swing.JFrame implements ActionListener{
         jMenu6.add(jMenuItem8);
 
         jMenu1.add(jMenu6);
+
+        jMenuItem9.setText("Button Remark");
+        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem9ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem9);
         jMenu1.add(jSeparator1);
 
         jMenuItem5.setText("Exit");
@@ -1166,6 +1203,12 @@ public class frm extends javax.swing.JFrame implements ActionListener{
             jToggleButton2.setSelected(false);
         }
         else{
+            
+            try {
+                buttonRemark();
+            } catch (ClassNotFoundException ex) {
+            }
+            
             if(jToggleButton2.isSelected()){
                 
                 if(!jRadioButtonMenuItem1.isSelected()){
@@ -1617,6 +1660,11 @@ public class frm extends javax.swing.JFrame implements ActionListener{
         }
     }//GEN-LAST:event_jTextField9MouseClicked
 
+    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+        // TODO add your handling code here:
+        new button().setVisible(true);
+    }//GEN-LAST:event_jMenuItem9ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1681,6 +1729,7 @@ public class frm extends javax.swing.JFrame implements ActionListener{
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
