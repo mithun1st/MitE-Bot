@@ -179,18 +179,18 @@ public class frm extends javax.swing.JFrame implements ActionListener{
         
         s[1]="Terminal  _________  (ENTER) / (Click)  ______  'typing-text-as-commmand'\n\n";
                
-        s[2]="  ^    ____________    (W) / (UP_Arrow) ________ press 'u1' , release 'u0'\n";
-        s[3]="  v    ____________   (S) / (DOWN_Arrow) ______ press 'd1' , release 'd0'\n";
-        s[4]="  <    ____________   (A) / (LEFT_Arrow) ________ press 'l1' , release 'l0'\n";
-        s[5]="  >    ____________   (D) / (RIGHT_Arrow) _______ press 'r1' , release 'r0'\n\n";
+        s[2]="  ^    ____________    (W) / (UP_Arrow) ________ press '@u1' , release '@u0'\n";
+        s[3]="  v    ____________   (S) / (DOWN_Arrow) ______ press '@d1' , release '@d0'\n";
+        s[4]="  <    ____________   (A) / (LEFT_Arrow) ________ press '@l1' , release '@l0'\n";
+        s[5]="  >    ____________   (D) / (RIGHT_Arrow) _______ press '@r1' , release '@r0'\n\n";
         
-        s[6]=" Button 1  ________________ (1) ________________ on 'a_on' , off 'a_off'\n";
-        s[7]=" Button 2  ________________ (2) ________________ on 'b_on' , off 'b_off'\n";
-        s[8]=" Button 3  ________________ (3) ________________ on 'c_on' , off 'c_off'\n";
-        s[9]=" Button 4  ________________ (4) ________________ on 'd_on' , off 'd_off'\n\n";
+        s[6]=" Button 1  ________________ (1) ________________ on '@a_on' , off '@a_off'\n";
+        s[7]=" Button 2  ________________ (2) ________________ on '@b_on' , off '@b_off'\n";
+        s[8]=" Button 3  ________________ (3) ________________ on '@c_on' , off '@c_off'\n";
+        s[9]=" Button 4  ________________ (4) ________________ on '@d_on' , off '@d_off'\n\n";
         
-        s[10]=" Slider 1  ________________  (I/P)  ________________  'x0' to 'x100'\n";
-        s[11]=" Slider 2  ________________  (O/L)  _______________  'y0' to 'y255'\n\n";
+        s[10]=" Slider 1  ________________  (I/P)  ________________  '@x0' to '@x100'\n";
+        s[11]=" Slider 2  ________________  (O/L)  _______________  '@y0' to '@y255'\n\n";
         
         for (int i = 0; i < s.length; i++) {
             str+=s[i];
@@ -201,36 +201,36 @@ public class frm extends javax.swing.JFrame implements ActionListener{
     private void keyPress(java.awt.event.KeyEvent evt) {
             if(jToggleButton2.isSelected()){
 
-            if((evt.getKeyCode()==KeyEvent.VK_W || evt.getKeyCode()==KeyEvent.VK_UP) && !tems.matches("u1")){
-                o.transmit(address,"u1",lan,ss);
-                tems="u1";
+            if((evt.getKeyCode()==KeyEvent.VK_W || evt.getKeyCode()==KeyEvent.VK_UP) && !tems.matches("@u1")){
+                o.transmit(address,"@u1",lan,ss);
+                tems="@u1";
             }
-            if((evt.getKeyCode()==KeyEvent.VK_S || evt.getKeyCode()==KeyEvent.VK_DOWN) && !tems.matches("d1")){
-                o.transmit(address,"d1",lan,ss);
-                tems="d1";
+            if((evt.getKeyCode()==KeyEvent.VK_S || evt.getKeyCode()==KeyEvent.VK_DOWN) && !tems.matches("@d1")){
+                o.transmit(address,"@d1",lan,ss);
+                tems="@d1";
             }
-            if((evt.getKeyCode()==KeyEvent.VK_A || evt.getKeyCode()==KeyEvent.VK_LEFT) && !tems.matches("l1")){
-                o.transmit(address,"l1",lan,ss);
-                tems="l1";
+            if((evt.getKeyCode()==KeyEvent.VK_A || evt.getKeyCode()==KeyEvent.VK_LEFT) && !tems.matches("@l1")){
+                o.transmit(address,"@l1",lan,ss);
+                tems="@l1";
             }
-            if((evt.getKeyCode()==KeyEvent.VK_D || evt.getKeyCode()==KeyEvent.VK_RIGHT) && !tems.matches("r1")){
-                o.transmit(address,"r1",lan,ss);
-                tems="r1";
+            if((evt.getKeyCode()==KeyEvent.VK_D || evt.getKeyCode()==KeyEvent.VK_RIGHT) && !tems.matches("@r1")){
+                o.transmit(address,"@r1",lan,ss);
+                tems="@r1";
             }
 
             // slider
             if(evt.getKeyCode()==KeyEvent.VK_O){
-                jSlider2.setValue(jSlider2.getValue()+3);
+                jSlider2.setValue(jSlider2.getValue()+10);
             }
             if(evt.getKeyCode()==KeyEvent.VK_L){
-                jSlider2.setValue(jSlider2.getValue()-3);
+                jSlider2.setValue(jSlider2.getValue()-10);
             }
 
             if(evt.getKeyCode()==KeyEvent.VK_I){
-                jSlider1.setValue(jSlider1.getValue()-5);
+                jSlider1.setValue(jSlider1.getValue()-15);
             }
             if(evt.getKeyCode()==KeyEvent.VK_P){
-                jSlider1.setValue(jSlider1.getValue()+5);
+                jSlider1.setValue(jSlider1.getValue()+15);
             }
         }    
     }
@@ -239,20 +239,20 @@ public class frm extends javax.swing.JFrame implements ActionListener{
         if(jToggleButton2.isSelected()){
             
             if(evt.getKeyCode()==KeyEvent.VK_W || evt.getKeyCode()==KeyEvent.VK_UP){
-                o.transmit(address,"u0",lan,ss);
-                tems="u0";
+                o.transmit(address,"@u0",lan,ss);
+                tems="@u0";
             }
             if(evt.getKeyCode()==KeyEvent.VK_S || evt.getKeyCode()==KeyEvent.VK_DOWN){
-                o.transmit(address,"d0",lan,ss);
-                tems="d0";
+                o.transmit(address,"@d0",lan,ss);
+                tems="@d0";
             }
             if(evt.getKeyCode()==KeyEvent.VK_A || evt.getKeyCode()==KeyEvent.VK_LEFT){
-                o.transmit(address,"l0",lan,ss);
-                tems="l0";
+                o.transmit(address,"@l0",lan,ss);
+                tems="@l0";
             }
             if(evt.getKeyCode()==KeyEvent.VK_D || evt.getKeyCode()==KeyEvent.VK_RIGHT){
-                o.transmit(address,"r0",lan,ss);
-                tems="r0";
+                o.transmit(address,"@r0",lan,ss);
+                tems="@r0";
             }
 
             //toggle
@@ -437,10 +437,11 @@ public class frm extends javax.swing.JFrame implements ActionListener{
         jTextField9 = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem9 = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
-        jMenuItem9 = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
@@ -458,7 +459,6 @@ public class frm extends javax.swing.JFrame implements ActionListener{
         jMenu4 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
@@ -999,6 +999,22 @@ public class frm extends javax.swing.JFrame implements ActionListener{
         jMenu1.setForeground(new java.awt.Color(255, 255, 255));
         jMenu1.setText("File");
 
+        jMenuItem3.setText("Data Sheet");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem3);
+
+        jMenuItem9.setText("Button Remark");
+        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem9ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem9);
+
         jMenu6.setText("Example Code");
 
         jMenuItem6.setText("IOT");
@@ -1018,14 +1034,6 @@ public class frm extends javax.swing.JFrame implements ActionListener{
         jMenu6.add(jMenuItem8);
 
         jMenu1.add(jMenu6);
-
-        jMenuItem9.setText("Button Remark");
-        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem9ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMenuItem9);
         jMenu1.add(jSeparator1);
 
         jMenuItem5.setText("Exit");
@@ -1156,14 +1164,6 @@ public class frm extends javax.swing.JFrame implements ActionListener{
 
         jMenu5.setForeground(new java.awt.Color(255, 255, 255));
         jMenu5.setText("Help");
-
-        jMenuItem3.setText("Data-Sheet");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
-            }
-        });
-        jMenu5.add(jMenuItem3);
 
         jMenuItem4.setText("About");
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
@@ -1357,14 +1357,14 @@ public class frm extends javax.swing.JFrame implements ActionListener{
     private void jSlider2MouseWheelMoved(java.awt.event.MouseWheelEvent evt) {//GEN-FIRST:event_jSlider2MouseWheelMoved
         // TODO add your handling code here:
         if(jToggleButton2.isSelected()){
-            jSlider2.setValue(jSlider2.getValue()-((3)*evt.getWheelRotation()));
+            jSlider2.setValue(jSlider2.getValue()-((10)*evt.getWheelRotation()));
         }
     }//GEN-LAST:event_jSlider2MouseWheelMoved
 
     private void jSlider1MouseWheelMoved(java.awt.event.MouseWheelEvent evt) {//GEN-FIRST:event_jSlider1MouseWheelMoved
         // TODO add your handling code here:
         if(jToggleButton2.isSelected()){
-            jSlider1.setValue(jSlider1.getValue()-((5)*evt.getWheelRotation()));
+            jSlider1.setValue(jSlider1.getValue()-((15)*evt.getWheelRotation()));
         }
     }//GEN-LAST:event_jSlider1MouseWheelMoved
 
@@ -1415,61 +1415,61 @@ public class frm extends javax.swing.JFrame implements ActionListener{
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
         // TODO add your handling code here:
         if(jRadioButton1.isSelected()){
-            o.transmit(address,"a_on",lan,ss);
+            o.transmit(address,"@a_on",lan,ss);
         }
         else{
-            o.transmit(address,"a_off",lan,ss);
+            o.transmit(address,"@a_off",lan,ss);
         }
     }//GEN-LAST:event_jRadioButton1ActionPerformed
 
     private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
         // TODO add your handling code here:
         if(jRadioButton2.isSelected()){
-            o.transmit(address,"b_on",lan,ss);
+            o.transmit(address,"@b_on",lan,ss);
         }
         else{
-            o.transmit(address,"b_off",lan,ss);
+            o.transmit(address,"@b_off",lan,ss);
         }
     }//GEN-LAST:event_jRadioButton2ActionPerformed
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         // TODO add your handling code here:
         if(jToggleButton1.isSelected()){
-            o.transmit(address,"c_on",lan,ss);
+            o.transmit(address,"@c_on",lan,ss);
         }
         else{
-            o.transmit(address,"c_off",lan,ss);
+            o.transmit(address,"@c_off",lan,ss);
         }
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
         // TODO add your handling code here:
         if(jToggleButton3.isSelected()){
-            o.transmit(address,"d_on",lan,ss);
+            o.transmit(address,"@d_on",lan,ss);
         }
         else{
-            o.transmit(address,"d_off",lan,ss);
+            o.transmit(address,"@d_off",lan,ss);
         }
     }//GEN-LAST:event_jToggleButton3ActionPerformed
 
     private void jSlider2StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSlider2StateChanged
         // TODO add your handling code here:
         try {
-            Thread.sleep(100);
+            Thread.sleep(50);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        o.transmit(address,"x"+jSlider2.getValue(),lan,ss);
+        o.transmit(address,"@x"+jSlider2.getValue(),lan,ss);
     }//GEN-LAST:event_jSlider2StateChanged
 
     private void jSlider1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSlider1StateChanged
         // TODO add your handling code here:
         try {
-            Thread.sleep(100);
+            Thread.sleep(50);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        o.transmit(address,"y"+jSlider1.getValue(),lan,ss);        
+        o.transmit(address,"@y"+jSlider1.getValue(),lan,ss);        
     }//GEN-LAST:event_jSlider1StateChanged
 
     private void jRadioButtonMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem1ActionPerformed
@@ -1505,65 +1505,65 @@ public class frm extends javax.swing.JFrame implements ActionListener{
 
     private void jButton1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MousePressed
         // TODO add your handling code here:
-        if(!tems.matches("u1") && jToggleButton2.isSelected()){
-            o.transmit(address,"u1",lan,ss);
-            tems="u1";
+        if(!tems.matches("@u1") && jToggleButton2.isSelected()){
+            o.transmit(address,"@u1",lan,ss);
+            tems="@u1";
         }
     }//GEN-LAST:event_jButton1MousePressed
 
     private void jButton2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MousePressed
         // TODO add your handling code here:
-            if(!tems.matches("d1")&& jToggleButton2.isSelected()){
-                o.transmit(address,"d1",lan,ss);
-                tems="d1";
+            if(!tems.matches("@d1")&& jToggleButton2.isSelected()){
+                o.transmit(address,"@d1",lan,ss);
+                tems="@d1";
             }
     }//GEN-LAST:event_jButton2MousePressed
 
     private void jButton3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MousePressed
         // TODO add your handling code here:
-        if(!tems.matches("l1")&& jToggleButton2.isSelected()){
-            o.transmit(address,"l1",lan,ss);
-            tems="l1";
+        if(!tems.matches("@l1")&& jToggleButton2.isSelected()){
+            o.transmit(address,"@l1",lan,ss);
+            tems="@l1";
         }
     }//GEN-LAST:event_jButton3MousePressed
 
     private void jButton4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MousePressed
         // TODO add your handling code here:
-        if(!tems.matches("r1")&& jToggleButton2.isSelected()){
-            o.transmit(address,"r1",lan,ss);
-            tems="r1";
+        if(!tems.matches("@r1")&& jToggleButton2.isSelected()){
+            o.transmit(address,"@r1",lan,ss);
+            tems="@r1";
         }
     }//GEN-LAST:event_jButton4MousePressed
 
     private void jButton1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseReleased
         // TODO add your handling code here:
         if(jToggleButton2.isSelected()){
-            o.transmit(address,"u0",lan,ss);
-            tems="u0";
+            o.transmit(address,"@u0",lan,ss);
+            tems="@u0";
         }
     }//GEN-LAST:event_jButton1MouseReleased
 
     private void jButton2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseReleased
         // TODO add your handling code here:
         if(jToggleButton2.isSelected()){
-            o.transmit(address,"d0",lan,ss);
-            tems="d0";
+            o.transmit(address,"@d0",lan,ss);
+            tems="@d0";
         }
     }//GEN-LAST:event_jButton2MouseReleased
 
     private void jButton3MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseReleased
         // TODO add your handling code here:
         if(jToggleButton2.isSelected()){
-            o.transmit(address,"l0",lan,ss);
-            tems="l0";
+            o.transmit(address,"@l0",lan,ss);
+            tems="@l0";
         }
     }//GEN-LAST:event_jButton3MouseReleased
 
     private void jButton4MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseReleased
         // TODO add your handling code here:
         if(jToggleButton2.isSelected()){
-            o.transmit(address,"r0",lan,ss);
-            tems="r0";
+            o.transmit(address,"@r0",lan,ss);
+            tems="@r0";
         }  
     }//GEN-LAST:event_jButton4MouseReleased
 
